@@ -8,8 +8,11 @@ public class Main {
         System.out.println("Вход");
         operand = scanner.nextLine();
         System.out.println("Выxoд");
+        System.out.println(calc(operand));
+    }
+    public static String calc(String input) throws Exception {
         Converter converter = new Converter();
-        String [] line = operand.split("[+\\-*/]");
+        String [] line = input.split("[+\\-*/]");
        if (line.length >2){
            throw new RuntimeException("формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
        }
@@ -45,9 +48,9 @@ public class Main {
         }if (isRoman && result == 0){
             throw new RuntimeException("В римской системе нет числа 0");
         }if (isRoman){
-            System.out.println(converter.intToRoman(result));
+            return converter.intToRoman(result);
         }else {
-            System.out.println(result);
+            return String.valueOf(result);
         }
 
     }
